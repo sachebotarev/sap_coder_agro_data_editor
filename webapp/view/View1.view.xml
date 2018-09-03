@@ -1,0 +1,320 @@
+<mvc:View controllerName="mymy_odata_editor.controller.View1" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc"
+	displayBlock="true" xmlns:tbl="sap.ui.table" xmlns="sap.m" >
+	<App>
+		<pages>
+			<Page title="{i18n>title}">
+				<content>
+					<Button text="Save" press="onSave"/>
+					<Input value="{ViewModel>/NewEntityPath}"/>
+					<Input value="{ViewModel>/NewEntityData}"/>
+					<Button text="Add Entity" press="onAddEntity"/>
+					<tbl:Table rows="{/ShippingLocations}" title="Shipping Locations" visibleRowCount="15">
+						<tbl:columns>
+							<tbl:Column>
+								<Label text="key"/>
+								<tbl:template>
+									<Input value="{ShippingLocationKey}"/>
+								</tbl:template>
+							</tbl:Column>
+							<tbl:Column>
+								<Label text="description"/>
+								<tbl:template>
+									<Input value="{Description}"/>
+								</tbl:template>
+							</tbl:Column>
+							<tbl:Column>
+								<Label text="regionName"/>
+								<tbl:template>
+									<Input value="{RegionName}"/>
+								</tbl:template>
+							</tbl:Column>
+							<tbl:Column>
+								<Label text="city"/>
+								<tbl:template>
+									<Input value="{City}"/>
+								</tbl:template>
+							</tbl:Column>
+							<tbl:Column>
+								<Label text="street"/>
+								<tbl:template>
+									<Input value="{Street}"/>
+								</tbl:template>
+							</tbl:Column>
+							<tbl:Column>
+								<Label text="addressLine"/>
+								<tbl:template>
+									<Input value="{AddressLine}"/>
+								</tbl:template>
+							</tbl:Column>
+							<tbl:Column>
+								<Label text="Region"/>
+								<tbl:template>
+									<Input value="{Region}"/>
+								</tbl:template>
+							</tbl:Column>
+							<tbl:Column>
+								<Label text="geoLocation"/>
+								<tbl:template>
+									<Input value="{GeoLocation}"/>
+								</tbl:template>
+							</tbl:Column>
+							<tbl:Column>
+								<Label text="LocationType"/>
+								<tbl:template>
+									<Input value="{LocationType}"/>
+								</tbl:template>
+							</tbl:Column>
+						</tbl:columns>
+					</tbl:Table>
+					<tbl:Table rows="{/Trucks}" title="Trucks" visibleRowCount="10">
+						<tbl:columns>
+							<tbl:Column width="5rem">
+								<Label text="key"/>
+								<tbl:template>
+									<Input value="{Uuid}"/>
+								</tbl:template>
+							</tbl:Column>
+							<tbl:Column width="5rem">
+								<Label text="key"/>
+								<tbl:template>
+									<Input value="{TruckNum}"/>
+								</tbl:template>
+							</tbl:Column>
+							<tbl:Column width="12rem">
+								<Label text="description"/>
+								<tbl:template>
+									<Input value="{Description}"/>
+								</tbl:template>
+							</tbl:Column>
+							<tbl:Column width="9rem">
+								<Label text="driver"/>
+								<tbl:template>
+									<Input value="{Driver}"/>
+								</tbl:template>
+							</tbl:Column>
+							<tbl:Column width="7rem">
+								<Label text="driverName"/>
+								<tbl:template>
+									<Input value="{DriverName}"/>
+								</tbl:template>
+							</tbl:Column>
+							<tbl:Column width="5rem">
+								<Label text="carrier"/>
+								<tbl:template>
+									<Input value="{Carrier}"/>
+								</tbl:template>
+							</tbl:Column>
+							<tbl:Column width="7rem">
+								<Label text="licensePlateNum"/>
+								<tbl:template>
+									<Input value="{LicensePlateNum}"/>
+								</tbl:template>
+							</tbl:Column>
+							<tbl:Column width="8rem">
+								<Label text="Status"/>
+								<tbl:template>
+									<Input value="{Status}"/>
+								</tbl:template>
+							</tbl:Column>
+							<tbl:Column width="6rem">
+								<Label text="MaxWeight"/>
+								<tbl:template>
+									<Input value="{MaxWeight}"/>
+								</tbl:template>
+							</tbl:Column>
+							<tbl:Column width="7rem">
+								<Label text="MaxVolume"/>
+								<tbl:template>
+									<Input value="{MaxVolume}"/>
+								</tbl:template>
+							</tbl:Column>
+							<tbl:Column>
+								<Label text="GeoLocation"/>
+								<tbl:template>
+									<Input value="{GeoLocation}"/>
+								</tbl:template>
+							</tbl:Column>
+						</tbl:columns>
+					</tbl:Table>
+					<tbl:Table rows="{/Carriers}" title="Carriers" visibleRowCount="10">
+						<tbl:columns>
+							<tbl:Column width="5rem">
+								<Label text="key"/>
+								<tbl:template>
+									<Input value="{CarrierKey}"/>
+								</tbl:template>
+							</tbl:Column>
+							<tbl:Column width="12rem">
+								<Label text="Name"/>
+								<tbl:template>
+									<Input value="{Name}"/>
+								</tbl:template>
+							</tbl:Column>
+							<tbl:Column width="9rem">
+								<Label text="reputationIndex"/>
+								<tbl:template>
+									<Input value="{ReputationIndex}"/>
+								</tbl:template>
+							</tbl:Column>
+						</tbl:columns>
+					</tbl:Table>
+					<tbl:Table rows="{/CarrierRegions}" title="CarrierRegions" visibleRowCount="10">
+						<tbl:columns>
+							<tbl:Column width="5rem">
+								<Label text="Carrier"/>
+								<tbl:template>
+									<Input value="{Carrier}"/>
+								</tbl:template>
+							</tbl:Column>
+							<tbl:Column>
+								<Label text="Region"/>
+								<tbl:template>
+									<Input value="{Region}"/>
+								</tbl:template>
+							</tbl:Column>
+						</tbl:columns>
+					</tbl:Table>
+					<tbl:Table rows="{/Transportations}" title="Transportations" visibleRowCount="10">
+						<tbl:columns>
+							<tbl:Column>
+								<Label text="key"/>
+								<tbl:template>
+									<Input value="{TransportationNum}"/>
+								</tbl:template>
+							</tbl:Column>
+							<tbl:Column>
+								<Label text="Status"/>
+								<tbl:template>
+									<Input value="{Status}"/>
+								</tbl:template>
+							</tbl:Column>
+							<tbl:Column>
+								<Label text="ShipFrom"/>
+								<tbl:template>
+									<Input value="{ShipFrom}"/>
+								</tbl:template>
+							</tbl:Column>
+							<tbl:Column>
+								<Label text="totalPriceRub"/>
+								<tbl:template>
+									<Input value="{TotalPriceRub}"/>
+								</tbl:template>
+							</tbl:Column>
+							<tbl:Column>
+								<Label text="totalWeight"/>
+								<tbl:template>
+									<Input value="{TotalWeight}"/>
+								</tbl:template>
+							</tbl:Column>
+							<tbl:Column>
+								<Label text="totalVolume"/>
+								<tbl:template>
+									<Input value="{TotalVolume}"/>
+								</tbl:template>
+							</tbl:Column>
+							<tbl:Column>
+								<Label text="WayBillPdfMediaResource"/>
+								<tbl:template>
+									<Input value="{WayBillPdfMediaResource}"/>
+								</tbl:template>
+							</tbl:Column>
+							<tbl:Column>
+								<Label text="pusherRoomId"/>
+								<tbl:template>
+									<Input value="{PusherRoomId}"/>
+								</tbl:template>
+							</tbl:Column>
+							
+						</tbl:columns>
+					</tbl:Table>
+					<tbl:Table rows="{/TransportationItems}" title="TransportationItems" visibleRowCount="10">
+						<tbl:columns>
+							<tbl:Column>
+								<Label text="transportation"/>
+								<tbl:template>
+									<Input value="{Transportation}"/>
+								</tbl:template>
+							</tbl:Column>
+							<tbl:Column>
+								<Label text="itemNum"/>
+								<tbl:template>
+									<Input value="{ItemNum}"/>
+								</tbl:template>
+							</tbl:Column>
+							<tbl:Column>
+								<Label text="Description"/>
+								<tbl:template>
+									<Input value="{Description}"/>
+								</tbl:template>
+							</tbl:Column>
+							<tbl:Column>
+								<Label text="quantity"/>
+								<tbl:template>
+									<Input value="{Quantity}"/>
+								</tbl:template>
+							</tbl:Column>
+							<tbl:Column>
+								<Label text="weight"/>
+								<tbl:template>
+									<Input value="{Weight}"/>
+								</tbl:template>
+							</tbl:Column>
+							<tbl:Column>
+								<Label text="volume"/>
+								<tbl:template>
+									<Input value="{Volume}"/>
+								</tbl:template>
+							</tbl:Column>
+						</tbl:columns>
+					</tbl:Table>
+					<tbl:Table rows="{/MediaResources}" title="MediaResources" visibleRowCount="10" rowActionCount="1">
+						<tbl:columns>
+							<tbl:Column>
+								<Label text="Uuid"/>
+								<tbl:template>
+									<Input value="{Uuid}"/>
+								</tbl:template>
+							</tbl:Column>
+							<tbl:Column>
+								<Label text="mediaResourceUuid"/>
+								<tbl:template>
+									<Input value="{MediaResourceUuid}"/>
+								</tbl:template>
+							</tbl:Column>
+						</tbl:columns>
+						<tbl:rowActionTemplate>
+								<tbl:RowAction>
+									<tbl:items>
+										<tbl:RowActionItem type="Navigation" press="onRemove"/>
+									</tbl:items>
+								</tbl:RowAction>
+							</tbl:rowActionTemplate>
+					</tbl:Table>
+					<tbl:Table rows="{/RoadEvents}" title="RoadEvents" visibleRowCount="10" rowActionCount="1">
+						<tbl:columns>
+							<tbl:Column>
+								<Label text="Uuid"/>
+								<tbl:template>
+									<Input value="{Uuid}"/>
+								</tbl:template>
+							</tbl:Column>
+							<tbl:Column>
+								<Label text="mediaResource"/>
+								<tbl:template>
+									<Input value="{MediaResource}"/>
+								</tbl:template>
+							</tbl:Column>
+						</tbl:columns>
+						<tbl:rowActionTemplate>
+								<tbl:RowAction>
+									<tbl:items>
+										<tbl:RowActionItem type="Navigation" press="onRemove"/>
+									</tbl:items>
+								</tbl:RowAction>
+							</tbl:rowActionTemplate>
+					</tbl:Table>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

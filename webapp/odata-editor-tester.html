@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>OData Editor - test page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script type="text/javascript" src="odata-editor.js"></script>
+
+    <script type="text/javascript">
+        window.addEventListener("load", init);
+
+        function init() {
+            document.getElementById("go").addEventListener("click", function () {
+                var uriElm = document.getElementById("baseUri");
+                var uischemaElm = document.getElementById("uischema");
+
+                if (!uriElm.value) {
+                    uriElm.focus();
+                    return;
+                }
+                if (!uischemaElm.value) {
+                    uischemaElm.focus();
+                    return;
+                }
+
+                var uischema = {};
+                try {
+                    uischema = JSON.parse(uischemaElm.value);
+                } catch (e) {
+                    uischemaElm.focus();
+                    return;
+                }
+
+                go(uriElm.value, uischema);
+            });
+        }
+
+        function go(uri, uischema) {
+            odataEditor.init(uri, uischema);
+            odataEditor.set("table_class", "table table-striped table-bordered table-hover");
+			odataEditor.set("datetimeformat", "dd/MM/yy HH:mm");
+			odataEditor.set("verb_tunneling", true);
+
+            var first = null;
+            var sb = [];
+            for (var entityName in odataEditor.uischema) {
+                var entity = odataEditor.uischema[entityName];
+                first = first || entityName;
+                sb.push("<option value=\"");
+                sb.push(entityName);
+                sb.push("\">");
+                sb.push(entity.text);
+                sb.push("</option>");
+            }
+            var select = document.getElementById("entities");
+            select.innerHTML = sb.join("");
+            select.addEventListener("change", function () { loadTable(this.children[this.selectedIndex].value) });
+
+            if (first) {
+                loadTable(first);
+            }
+        }
+
+        function loadTable(entityName) {
+            odataEditor.genTables("odataContainer", entityName);
+            document.getElementById("entities").focus();
+        }
+
+    </script>
+    <style>
+        #entities {
+            font-size: 2em;
+        }
+
+        #baseUri, #uischema {
+            min-width: 400px;
+        }
+    </style>
+</head>
+<body>
+    <span>Paste an odata uri and a json ui-schema and go!</span>
+    <input type="button" id="go" value="Go!" />
+    <br />
+    <input type="text" id="baseUri" value="http://services.odata.org/V3/(S(05q5qkboemohigishovrhcxi))/OData/OData.svc" />
+    <br />
+    <textarea id="uischema" rows="10">
+{
+"Person":{"text" : "people", "orderby" : "Name desc","top": 2, "filter":"ID gt 0"},
+"Product":{"text": "products", "readonly":true},
+"ProductDetail":{"columns": {"ProductID": {"text": "Product Code", "readonly": true}}}
+}
+    </textarea>
+    <br />
+    <select id="entities"></select>
+    <div id="odataContainer"></div>
+</body>
+</html>
